@@ -1,11 +1,24 @@
 <?php
 $merk = [
-    ["Sepeda Montor", "Hayabusa", 80.000,000,00],
-    ["Sepeda Montor", "CBR 600 f4i", 60.000,000,00],
-    ["Sepeda Montor", "Kawasaki H2",150.000,000,00],
-    ["Mobil", "Ranger", 100.000,000,00],
-    ["Mobil", "Pajero", 100.000,000,00],
-    ["Mobil", "Kijang",100.000,000,00]
+    ["Speda Montor", "Hayabusa", 8000000000,"hayabusa.jpeg"],
+    ["Mobil", "Ranger", 10000000000,"ranger.jpg"],
+    ["Speda Montor", "CBR 600 f4i", 6000000000,"cbr.jpg"],
+    ["Mobil", "Sport",10000000000,"sport.png"],
+    ["Speda Montor", "Kawasaki H2",15000000000,"kawasaki.jpg"],
+    ["Mobil", "Pajero", 10000000000,"pajero.jpg"],
+    ["Speda Montor", "RX-KING",15000000000,"king.jpg"],
+    ["Mobil", "Merchendes", 10000000000,"mc.jpg"],
+    ["Speda Montor", "GL PRO",15000000000,"gl.jpg"],
+    ["Mobil", "Sport", 10000000000,"mo.jpg"],
+    ["Speda Montor", "CB",15000000000,"cb.png"],
+    ["Mobil", "Sport",10000000000,"mob.jpg"],
+    ["Speda Montor", "CB",15000000000,"c.jpg"],
+    ["Mobil", "Sport",10000000000,"mobi.jpg"],
+    ["Speda Montor", "custom",15000000000,"cu.png"],
+    ["Mobil", "Sport",10000000000,"mobil.jpg"],
+    ["Speda Montor", "Custom",15000000000,"cus.jpg"],
+    ["Mobil", "Kijang",10000000000,"kijang.jpg"],
+    ["Speda Montor", "Choper",15000000000,"custom.jpeg"]
 ];
 
 // Membuat Pilihan
@@ -34,7 +47,7 @@ if(isset($_POST['filter']))
         foreach($merk as $key)
         {
             if($key[0] == $filter){
-                $tampilkan_merk[]=[$key[0],$key[1],$key[2]];
+                $tampilkan_merk[]=[$key[0],$key[1],$key[2],$key[3]];
             }
         }
     }
@@ -68,20 +81,28 @@ if(isset($_POST['filter']))
         <input type="submit" value="filter">
     </form>
     <table class="table">
+      <div class="container">
+        <div class="col">
   <thead class="thead-dark">
     <tr>
+      <th scope="col">GAMBAR</th>
       <th scope="col">TYPE</th>
-      <th scope="col">MERK</th>
+      <th scope="col">MEREK</th>
       <th scope="col">HARGA</th>
+
     </tr>
   </thead>
+        </div>
+      </div>
   <?php $grand_total=0; ?>
   <?php foreach ($tampilkan_merk as $key => $value): ?>
   <tbody>
     <tr>
-      <td><?php echo $value[0]; ?></td>
-      <td><?php echo $value[1]; ?></td>
-      <td><?php echo $value[2]; ?></td>
+      <td><b><img src="gambar/<?php echo $value[3]; ?>" alt="" width="200px"  height="200px"></b></td>
+      <td><b><?php echo $value[0]; ?></b></td>
+      <td><b><?php echo $value[1]; ?></b></td>
+      <td><b><?php echo $value[2]; ?></b></td>
+      
     </tr>
 </tbody>
 <?php $grand_total+=$value[2]; ?>
@@ -90,7 +111,9 @@ if(isset($_POST['filter']))
     <tr>
       <th scope="col">Total Keseluruhan</th>
       <th scope="col"></th>
+      <th scope="col"></th>
       <th scope="col"><?php echo $grand_total; ?></th>
+
     </tr>
   </thead>
 
